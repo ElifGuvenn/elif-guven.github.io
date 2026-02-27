@@ -1,0 +1,29 @@
+# Chaos Engineering Demo Project
+
+## Proje Hakkında
+Bu proje, mikroservis mimarilerinde sistem dayanıklılığını (resilience) test etmek amacıyla geliştirilmiş bir **Chaos Engineering Dashboard** uygulamasıdır.
+
+## Mimari Kararlar ve Platform Kısıtlamaları
+Proje geliştirme sürecinde **Google Cloud Platform (GCP)** ve **Kubernetes (GKE)** altyapısı hedeflenmiş, ancak dağıtım ortamı (Deployment Environment) olarak **PythonAnywhere** kullanılması gerekmiştir.
+
+PythonAnywhere altyapısı, `docker` daemon veya `kubectl` komutlarının çalıştırılmasına izin vermediği için (Container Orchestration kısıtlamaları), **Chaos Mesh** mimarisi **Uygulama Katmanı (Application Layer)** seviyesinde simüle edilmiştir.
+
+## Özellikler
+Proje şunları içerir:
+1.  **Fault Injection (Hata Enjeksiyonu):**
+    -   **Network Latency:** Ağ gecikmelerini simüle eder.
+    -   **Pod Failure:** Servis kesintilerini (HTTP 500) simüle eder.
+    -   **CPU Stress:** Yüksek kaynak kullanımını simüle eder.
+2.  **Real-time Monitoring:** Anlık gecikme süreleri ve sistem sağlığı grafikleri.
+3.  **Resilience Testing:** Sistemin hatalar karşısındaki davranışını gözlemleme.
+
+## Dosya Yapısı
+- `/app`: Ana uygulama kodları (Flask based microservice).
+- `/chaos-experiments`: Kaos senaryoları (Mantıksal tanımlar).
+- `/k8s`: (Opsiyonel) Kubernetes dağıtım dosyaları (Deployment manifests).
+
+## Nasıl Çalıştırılır?
+Uygulama canlı olarak şu adreste çalışmaktadır:
+http://elifguvenn19.pythonanywhere.com/
+
+(Lokalde çalıştırmak için `python frontend.py` komutu yeterlidir).
