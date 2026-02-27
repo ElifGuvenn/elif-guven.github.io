@@ -1,29 +1,81 @@
-# Chaos Engineering Demo Project
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Web Programlama Dersi</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; /* Görseldeki klasik font yapısı */
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #000;
+        }
+        ul {
+            list-style-type: disc;
+        }
+        a {
+            color: blue;
+            text-decoration: underline;
+        }
+        .contact-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .contact-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        footer {
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
 
-## Proje Hakkında
-Bu proje, mikroservis mimarilerinde sistem dayanıklılığını (resilience) test etmek amacıyla geliştirilmiş bir **Chaos Engineering Dashboard** uygulamasıdır.
+    <h1>İletişim</h1>
+    <p>Benimle iletişime geçebileceğiniz bilgiler</p>
 
-## Mimari Kararlar ve Platform Kısıtlamaları
-Proje geliştirme sürecinde **Google Cloud Platform (GCP)** ve **Kubernetes (GKE)** altyapısı hedeflenmiş, ancak dağıtım ortamı (Deployment Environment) olarak **PythonAnywhere** kullanılması gerekmiştir.
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li><a href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
 
-PythonAnywhere altyapısı, `docker` daemon veya `kubectl` komutlarının çalıştırılmasına izin vermediği için (Container Orchestration kısıtlamaları), **Chaos Mesh** mimarisi **Uygulama Katmanı (Application Layer)** seviyesinde simüle edilmiştir.
+    <h2>İletişim Bilgilerim</h2>
 
-## Özellikler
-Proje şunları içerir:
-1.  **Fault Injection (Hata Enjeksiyonu):**
-    -   **Network Latency:** Ağ gecikmelerini simüle eder.
-    -   **Pod Failure:** Servis kesintilerini (HTTP 500) simüle eder.
-    -   **CPU Stress:** Yüksek kaynak kullanımını simüle eder.
-2.  **Real-time Monitoring:** Anlık gecikme süreleri ve sistem sağlığı grafikleri.
-3.  **Resilience Testing:** Sistemin hatalar karşısındaki davranışını gözlemleme.
+    <ul class="contact-list">
+        <li><span class="icon">✉️</span> <strong>E-posta:</strong> &nbsp; <a href="#">ogrenci@example.com</a></li>
+        <li><span class="icon">📱</span> <strong>Telefon:</strong> &nbsp; <a href="^#"></a></li>
+        <li><span class="icon">💻</span> <strong>GitHub:</strong> &nbsp; <a href="https://github.com/ElifGuvenn"_blank">GitHub Profilim</a></li>
+        <li><span class="icon">🔗</span> <strong>LinkedIn:</strong> &nbsp; <a href="https:https://www.linkedin.com/in/elif-guven-48a413346/" target="_blank">LinkedIn Profilim</a></li>
+    </ul>
 
-## Dosya Yapısı
-- `/app`: Ana uygulama kodları (Flask based microservice).
-- `/chaos-experiments`: Kaos senaryoları (Mantıksal tanımlar).
-- `/k8s`: (Opsiyonel) Kubernetes dağıtım dosyaları (Deployment manifests).
+    <p><a href="index.html">← Ana sayfaya geri dön</a></p>
 
-## Nasıl Çalıştırılır?
-Uygulama canlı olarak şu adreste çalışmaktadır:
-http://elifguvenn19.pythonanywhere.com/
+    <hr>
 
-(Lokalde çalıştırmak için `python frontend.py` komutu yeterlidir).
+    <footer>
+        <p>&copy; 2026 Web Programlama Dersi</p>
+    </footer>
+
+</body>
+</html>
