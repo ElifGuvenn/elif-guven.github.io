@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programlama CSS Ödevi</title>
+    <style>
+        /* --- CSS BAŞLANGIÇ --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            padding: 40px 60px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Hiyerarşik Seçici 1: header içindeki h1 */
+        header h1 {
+            display: inline-block;
+            width: 50%;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Hiyerarşik Seçici 2: nav a */
+        nav {
+            display: inline-block;
+            width: 48%;
+            text-align: right;
+        }
+
+        nav ul li {
+            display: inline-block; /* Menüyü yatay yapmak için */
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            background-color: #e7effd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        /* Link Hover Efekti */
+        nav ul li a:hover {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        .header-alt {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* --- MAIN CONTENT (İKİ SÜTUN) --- */
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+
+        .content-box, .sidebar-box {
+            display: inline-block; /* Kutuları yan yana getirir */
+            vertical-align: top;
+            padding: 20px;
+            min-height: 300px;
+            border-radius: 6px;
+        }
+
+        .content-box {
+            width: 63%;
+            background-color: #fff9e6; /* Görseldeki sarımtırak */
+            border: 1px solid #ffeeba;
+            margin-right: 2%;
+        }
+
+        .sidebar-box {
+            width: 33%;
+            background-color: #e7f3ff; /* Görseldeki mavimsi */
+            border: 1px solid #b8daff;
+        }
+
+        /* Grup Seçici: h3 ve p etiketlerini beraber düzenler */
+        h3, p {
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        /* Metin Düzenlemeleri */
+        p {
+            font-size: 15px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #eee;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Elif Güven</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="#">Hakkımda</a></li>
+                <li><a href="#">İlgi Alanlarım</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </nav>
+        <p class="header-alt"><b>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</b></p>
+    </header>
+
+    <main>
+        <section class="content-box">
+            <h3>Hoş Geldiniz</h3>
+            <p>Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış örnek bir kişisel tanıtım sayfasıdır. Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.</p>
+            
+            <h3>Öğrenme Hedeflerim</h3>
+            <p>1. HTML temellerini öğrenmek</p>
+            <p>2. CSS ile sayfa tasarlamak</p>
+            <p>3. JavaScript ile etkileşim eklemek</p>
+            <p>4. ASP.NET Core ile dinamik site geliştirmek</p>
+        </section>
+
+        <aside class="sidebar-box">
+            <h3>Hızlı Bilgiler</h3>
+            <p><b>Üniversite:</b> Marmara Üni.</p>
+            <p><b>Bölüm:</b> Bilgisayar Müh.</p>
+            <p><b>İlgi Alanı:</b> Web Teknolojileri</p>
+            
+            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
+            
+            <h3>Bağlantılar</h3>
+            <p><a href="https://github.com" target="_blank">GitHub</a></p>
+            <p><a href="https://www.w3schools.com" target="_blank">W3Schools</a></p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>© 2026 Elif Güven | Web Programlama Dersi</p>
+    </footer>
+
+</body>
+</html>
