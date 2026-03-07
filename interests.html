@@ -1,62 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlgi Alanlarım | Elif Güven</title>
+    <style>
+        /* --- GENEL TASARIM --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            padding: 40px 60px;
+        }
+
+        /* --- ÜST ALAN (HEADER) --- */
+        header {
+            background-color: #ffffff;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px 10px 0 0;
+        }
+
+        header h1 {
+            display: inline-block;
+            width: 45%;
+            color: #2c3e50;
+        }
+
+        header nav {
+            display: inline-block;
+            width: 53%;
+            text-align: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            background-color: #e7effd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header-sub {
+            margin-top: 15px;
+            color: #555;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* --- ANA İÇERİK ALANI --- */
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .content-box, .sidebar-box {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 450px;
+        }
+
+        /* Sol Kolon (İlgi Alanları ve Rutin) */
+        .content-box {
+            width: 62%;
+            background-color: #fffdf2;
+            border: 1px solid #f9ebbe;
+            margin-right: 2%;
+        }
+
+        /* Sağ Kolon (Sözlük) */
+        .sidebar-box {
+            width: 34%;
+            background-color: #f0f7ff;
+            border: 1px solid #d1e3ff;
+        }
+
+        /* --- METİN VE LİSTE DÜZENLERİ --- */
+        h2, h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p, ul, ol {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+        }
+
+        /* Alt liste  için özel stil */
+        ul ul {
+            margin-top: 5px;
+            list-style-type: circle;
+            color: #555;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
 <body>
 
-<div class="container">
+    <header>
+        <h1>İlgi Alanlarım</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html">İlgi Alanlarım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+                <li><a href="odev.html">Css Sayfası</a></li>
+            </ul>
+        </nav>
+        <p class="header-sub">Teknoloji ve kişisel ilgi alanlarım</p>
+    </header>
 
-<h1>İlgi Alanlarım</h1>
+    <main>
+        <section class="content-box">
+            <h2>Teknoloji İlgi Alanlarım</h2>
+            <ul>
+                <li>Web geliştirme (Frontend & Backend)</li>
+                <li>Yapay zeka uygulamaları</li>
+                <li>Mobil uygulama geliştirme</li>
+                <li><strong>Öğrenmek istediğim teknolojiler:</strong>
+                    <ul>
+                        <li>React (Modern UI)</li>
+                        <li>ASP.NET Core (Kurumsal Backend)</li>
+                        <li>Flutter (Cross-Platform Mobil)</li>
+                    </ul>
+                </li>
+            </ul>
 
-<p>Teknoloji ve kişisel ilgi alanlarım</p>
+            <h2>Günlük Çalışma Rutinim</h2>
+            <ol>
+                <li>Ders materyallerini gözden geçirmek</li>
+                <li>Kodlama pratiği yapmak (Daily Coding)</li>
+                <li>Yeni teknolojiler araştırmak</li>
+                <li>Kişisel proje geliştirmek</li>
+            </ol>
 
-<ul>
-<li><a href="index.html">Ana Sayfa</a></li>
-<li><a href="about.html">Hakkımda</a></li>
-<li><a href="interests.html">İlgi Alanlarım</a></li>
-<li><a href="contact.html">İletişim</a></li>
-<li><a href="odev.html">Css Sayfası</a></li>
-</ul>
+            <a href="index.html" class="back-link">← Ana sayfaya geri dön</a>
+        </section>
 
-<h2>Teknoloji Alanındaki İlgi Alanlarım</h2>
+        <aside class="sidebar-box">
+            <h3>Web Teknolojileri Sözlüğü</h3>
+            
+            <p><strong>HTML:</strong> Web sayfalarının iskeletini ve içeriğini belirleyen işaretleme dilidir.</p>
+            
+            <p><strong>CSS:</strong> Web sayfalarının görsel düzenini, renklerini ve mizanpajını belirleyen tasarım dilidir.</p>
+            
+            <p><strong>JavaScript:</strong> Web sayfalarına dinamizm, animasyon ve etkileşim kazandıran programlama dilidir.</p>
 
-<ul>
-<li>Web geliştirme</li>
-<li>Yapay zeka uygulamaları</li>
-<li>Mobil uygulama geliştirme</li>
-<li>Öğrenmek istediğim teknolojiler
-    <ul>
-        <li>React</li>
-        <li>ASP.NET Core</li>
-        <li>Flutter</li>
-    </ul>
-</li>
-</ul>
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #d1e3ff;">
+            
+            <p><em>Not: Bu tanımlar Web Programlama dersi kapsamında temel düzeyde açıklanmıştır.</em></p>
+        </aside>
+    </main>
 
-<h2>Günlük Çalışma Rutinim</h2>
-
-<ol>
-<li>Ders materyallerini gözden geçirmek</li>
-<li>Kodlama pratiği yapmak</li>
-<li>Yeni teknolojiler araştırmak</li>
-<li>Proje geliştirmek</li>
-</ol>
-
-<h2>Web Teknolojileri Sözlüğü</h2>
-
-<p><b>HTML</b> - Web sayfalarının iskeletini oluşturan işaretleme dilidir.</p>
-
-<p><b>CSS</b> - Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</p>
-
-<p><b>JavaScript</b> - Web sayfalarına etkileşim kazandıran programlama dilidir.</p>
-
-<br>
-
-<a href="index.html">← Ana sayfaya geri dön</a>
-
-<hr>
-
-<p>© 2026 Web Programlama Dersi</p>
-
-</div>
+    <footer>
+        <p>© 2026 Elif Güven | Web Programlama Dersi</p>
+    </footer>
 
 </body>
+</html>
+
 
 
 
