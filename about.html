@@ -2,52 +2,190 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title> Kişisel Web Sitesi</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımda | Elif Güven</title>
+    <style>
+        /* --- GENEL TASARIM --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+        }
 
+        body {
+            background-color: #f4f4f9;
+            padding: 40px 60px;
+        }
+
+        /* --- ÜST ALAN (HEADER) --- */
+        header {
+            background-color: #ffffff;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px 10px 0 0;
+        }
+
+        header h1 {
+            display: inline-block;
+            width: 45%;
+            color: #2c3e50;
+        }
+
+        header nav {
+            display: inline-block;
+            width: 53%;
+            text-align: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            background-color: #e7effd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header-sub {
+            margin-top: 15px;
+            color: #555;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* --- ANA İÇERİK ALANI --- */
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .content-box, .sidebar-box {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        /* Sol Kolon (Anlatım) */
+        .content-box {
+            width: 62%;
+            background-color: #fffdf2;
+            border: 1px solid #f9ebbe;
+            margin-right: 2%;
+        }
+
+        /* Sağ Kolon (Liste Bilgileri) */
+        .sidebar-box {
+            width: 34%;
+            background-color: #f0f7ff;
+            border: 1px solid #d1e3ff;
+        }
+
+        /* --- METİN VE GRUP SEÇİCİLER --- */
+        h2, h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p, ul, ol {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
 
-<div class="container">
+    <header>
+        <h1>Hakkımda</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html">İlgi Alanlarım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+                <li><a href="odev.html">Css Sayfası</a></li>
+            </ul>
+        </nav>
+        <p class="header-sub">Kendimi ve hedeflerimi tanıttığım sayfa</p>
+    </header>
 
-<h1>Hakkımda</h1>
+    <main>
+        <section class="content-box">
+            <h2>Ben Kimim?</h2>
+            <p>Merhaba, ben Bilgisayar Mühendisliği öğrencisiyim. Teknolojiye olan merakım ve problem çözme tutkum beni bu alana yönlendirdi.</p>
 
-<p>Kendimi ve hedeflerimi tanıttığım sayfa</p>
+            <h2>Motivasyonum</h2>
+            <p><i>"İyi yazılmış bir web sitesi sadece kod yığını değil, kullanıcıya sunulan bir deneyimdir."</i> Bu düşünceyle, her projede daha kullanıcı dostu ve optimize edilmiş yapılar kurmaya çalışıyorum.</p>
 
-<ul>
-<li><a href="index.html">Ana Sayfa</a></li>
-<li><a href="about.html">Hakkımda</a></li>
-<li><a href="interests.html">İlgi Alanlarım</a></li>
-<li><a href="contact.html">İletişim</a></li>
-<li><a href="odev.html">Css Sayfası</a></li>
-</ul>
+            <h2>Hedeflerim</h2>
+            <ol>
+                <li>Modern web teknolojilerini (React, Vue vb.) öğrenmek</li>
+                <li>Responsive (mobil uyumlu) tasarım standartlarını en üst seviyeye taşımak</li>
+                <li>ASP.NET Core ile güçlü ve güvenli arka yüz (backend) uygulamaları geliştirmek</li>
+            </ol>
 
-<h2>Ben Kimim?</h2>
-<p>Merhaba, ben Bilgisayar Mühendisliği öğrencisiyim...</p>
+            <a href="index.html" class="back-link">← Ana sayfaya geri dön</a>
+        </section>
 
-<h2>Eğitim Bilgilerim</h2>
-<ul>
-<li>Marmara Üniversitesi</li>
-<li>Bilgisayar Mühendisliği</li>
-<li>Web Programlama dersi</li>
-</ul>
+        <aside class="sidebar-box">
+            <h3>Eğitim Bilgilerim</h3>
+            <ul>
+                <li><b>Üniversite:</b> Marmara Üniversitesi</li>
+                <li><b>Bölüm:</b> Bilgisayar Mühendisliği</li>
+                <li><b>Ders:</b> Web Programlama</li>
+                <li><b>Sınıf:</b> 3. Sınıf</li>
+            </ul>
 
-<h2>Motivasyonum</h2>
-<p>"İyi yazılmış bir web sitesi..."</p>
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #d1e3ff;">
+            
+            <p>Sürekli öğrenen ve gelişime açık bir mühendis adayı olarak, projelerimde teknik detaylara ve tasarım estetiğine önem veriyorum.</p>
+        </aside>
+    </main>
 
-<h2>Hedeflerim</h2>
-<ol>
-<li>Modern web teknolojilerini öğrenmek</li>
-<li>Responsive tasarım geliştirmek</li>
-<li>ASP.NET Core ile uygulamalar yazmak</li>
-</ol>
-
-<a href="index.html">← Ana sayfaya geri dön</a>
-
-<hr>
-<p>© 2026 Web Programlama Dersi</p>
-
-</div>
+    <footer>
+        <p>© 2026 Elif Güven | Web Programlama Dersi</p>
+    </footer>
 
 </body>
+</html>
+
 
 
