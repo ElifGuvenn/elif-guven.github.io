@@ -81,7 +81,6 @@
             min-height: 350px;
         }
 
-        /* Sol Kolon (İletişim Listesi + FORM) */
         .content-box {
             width: 62%;
             background-color: #fffdf2;
@@ -89,7 +88,6 @@
             margin-right: 2%;
         }
 
-        /* Sağ Kolon (Ek Bilgi) */
         .sidebar-box {
             width: 34%;
             background-color: #f0f7ff;
@@ -99,7 +97,7 @@
         /* --- LİSTE VE İKONLAR --- */
         .contact-list {
             list-style-type: none;
-            margin: 20px 0;
+            margin-top: 20px;
         }
 
         .contact-list li {
@@ -114,76 +112,6 @@
             font-size: 1.3em;
         }
 
-        /* --- YENİ EKLENEN FORM STİLLERİ --- */
-        .contact-form-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #f9ebbe;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        /* Görsellerdeki gibi ikonlu input yapısı */
-        .input-with-icon {
-            position: relative;
-        }
-
-        .input-with-icon input, .input-with-icon textarea {
-            width: 100%;
-            padding: 12px 12px 12px 40px; /* Sol tarafa ikon boşluğu */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-
-        .input-with-icon .field-icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-        }
-
-        .input-with-icon textarea {
-            padding-left: 12px; /* Textarea için ikonu üste almadım, sade bıraktım */
-        }
-
-        input:focus, textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0,123,255,0.2);
-            outline: none;
-        }
-
-        .submit-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        /* --- GENEL ETİKETLER --- */
         h2, h3 {
             margin-bottom: 15px;
             color: #2c3e50;
@@ -194,22 +122,74 @@
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
         }
 
+        /* --- ÖDEV: CSS GEREKSİNİMLERİ (FORM) --- */
+
+        .contact-container {
+            width: 600px;           /* Gereksinim: Belirli genişlik */
+            margin: 40px auto;      /* Gereksinim: Margin auto ile ortalama */
+            padding: 30px;          /* Gereksinim: İç boşluk */
+            border: 2px solid #ddd;  /* Gereksinim: Belirgin kenarlık */
+            border-radius: 12px;    /* Gereksinim: Köşe yuvarlaması */
+            background-color: #ffffff;
+            clear: both;            /* Yerleşimi korumak için */
+        }
+
+        .contact-container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Gereksinim: Çoklu seçici kullanımı */
+        .contact-container input, 
+        .contact-container select, 
+        .contact-container textarea {
+            width: 100%;            /* Gereksinim: Tam genişlik */
+            padding: 12px;          /* Gereksinim: Ferah iç boşluk */
+            margin-bottom: 20px;    /* Gereksinim: Alt elemanla boşluk */
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .contact-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Gereksinim: Gönder Butonu Tasarımı */
+        .contact-container button[type="submit"] {
+            background-color: #007bff; /* Arka plan rengi */
+            color: white;
+            border: none;              /* Kenarlık kaldırıldı */
+            padding: 12px 25px;        /* Alt-üst ve sağ-sol padding */
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;               /* Butonu tam genişlik yaptım */
+            transition: 0.3s;
+        }
+
+        .contact-container button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- FOOTER --- */
         footer {
             background-color: #fff;
             padding: 20px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 0 0 10px 10px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -226,7 +206,7 @@
                 <li><a href="odev.html">Css Sayfası</a></li>
             </ul>
         </nav>
-        <p class="header-sub">Benimle iletişime geçebileceğiniz bilgiler ve mesaj formu</p>
+        <p class="header-sub">Benimle iletişime geçebileceğiniz bilgiler</p>
     </header>
 
     <main>
@@ -238,52 +218,39 @@
                 <li><span class="icon">💻</span> <strong>GitHub:</strong> &nbsp; <a href="https://github.com/ElifGuvenn" target="_blank">GitHub Profilim</a></li>
                 <li><span class="icon">🔗</span> <strong>LinkedIn:</strong> &nbsp; <a href="https://www.linkedin.com/in/elif-guven-48a413346/" target="_blank">LinkedIn Profilim</a></li>
             </ul>
-
-            <div class="contact-form-section">
-                <h3>Bana Mesaj Gönderin</h3>
-                <form action="#">
-                    <div class="form-group">
-                        <label for="name">Adınız Soyadınız</label>
-                        <div class="input-with-icon">
-                            <span class="field-icon">👤</span>
-                            <input type="text" id="name" name="name" placeholder="Adınızı giriniz" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">E-posta Adresiniz</label>
-                        <div class="input-with-icon">
-                            <span class="field-icon">📧</span>
-                            <input type="email" id="email" name="email" placeholder="E-posta adresinizi giriniz" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Mesajınız</label>
-                        <div class="input-with-icon">
-                            <textarea id="message" name="message" rows="5" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Mesajı Gönder</button>
-                </form>
-            </div>
-
             <a href="index.html" class="back-link">← Ana sayfaya geri dön</a>
         </section>
 
         <aside class="sidebar-box">
-            <h3>Neden Ulaşmalısınız?</h3>
-            <p>Projelerim hakkında sorularınız, iş teklifleri veya akademik iş birlikleri için mesaj göndermekten çekinmeyin.</p>
-            
+            <h3>Bana Ulaşın</h3>
+            <p>Projelerim hakkında sorularınız, iş teklifleri gibi durumlar için aşağıdaki iletişim formundan bana ulaşabilirsiniz.</p>
             <hr style="margin: 20px 0; border: 0; border-top: 1px solid #d1e3ff;">
-            
-            <h3>Çalışma Saatleri</h3>
-            <p>Hafta içi: 09:00 - 18:00<br>
-            Hafta sonu: Sadece acil durumlar.</p>
-            
-            <p style="margin-top: 20px;">Marmara Üniversitesi öğrencisi olarak genellikle gün içinde e-postalara hızlı dönüş yapmaktayım.</p>
+            <p>Marmara Üniversitesi'ndeki eğitim sürecimle ilgili paylaşımlarımı GitHub üzerinden takip edebilirsiniz.</p>
         </aside>
+
+        <div class="contact-container">
+            <h3>Mesaj Gönderin</h3>
+            <form action="#">
+                <label for="adsoyad">Ad Soyad</label>
+                <input type="text" id="adsoyad" name="adsoyad" placeholder="Adınızı ve soyadınızı giriniz..." required>
+
+                <label for="email">E-posta</label>
+                <input type="email" id="email" name="email" placeholder="E-posta adresinizi giriniz..." required>
+
+                <label for="konu">Konu</label>
+                <select id="konu" name="konu">
+                    <option value="">Bir konu seçin</option>
+                    <option value="is">İş Teklifi</option>
+                    <option value="soru">Soru</option>
+                    <option value="geribildirim">Geri Bildirim</option>
+                </select>
+
+                <label for="mesaj">Mesaj</label>
+                <textarea id="mesaj" name="mesaj" rows="5" placeholder="Mesajınızı buraya yazınız..."></textarea>
+
+                <button type="submit">Gönder</button>
+            </form>
+        </div>
     </main>
 
     <footer>
@@ -292,6 +259,7 @@
 
 </body>
 </html>
+
 
 
 
