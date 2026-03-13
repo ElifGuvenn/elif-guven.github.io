@@ -17,7 +17,6 @@
             padding: 40px 60px;
         }
  
-        /* --- ÜST ALAN (HEADER) --- */
         header {
             background-color: #ffffff;
             padding: 25px;
@@ -64,7 +63,6 @@
             padding-top: 10px;
         }
  
-        /* --- ANA İÇERİK ALANI --- */
         main {
             background-color: #fff;
             padding: 20px;
@@ -80,7 +78,6 @@
             min-height: 350px;
         }
  
-        /* Sol Kolon (İletişim Listesi) */
         .content-box {
             width: 62%;
             background-color: #fffdf2;
@@ -88,14 +85,12 @@
             margin-right: 2%;
         }
  
-        /* Sağ Kolon (Ek Bilgi) */
         .sidebar-box {
             width: 34%;
             background-color: #f0f7ff;
             border: 1px solid #d1e3ff;
         }
  
-        /* --- LİSTE VE İKONLAR --- */
         .contact-list {
             list-style-type: none;
             margin-top: 20px;
@@ -127,7 +122,6 @@
             text-decoration: underline;
         }
  
-        /* --- FOOTER --- */
         footer {
             background-color: #fff;
             padding: 20px;
@@ -142,7 +136,7 @@
             font-weight: bold;
         }
  
-        /* --- FORM ALANI --- */
+        /* FORM */
         .form-section {
             margin-top: 30px;
             padding-top: 25px;
@@ -207,13 +201,13 @@
             resize: vertical;
         }
  
-        /* Radio & Checkbox grupları */
         .radio-group,
         .checkbox-group {
             border: 1px solid #ddd;
             border-radius: 6px;
             padding: 12px 16px;
             background-color: #f9f9f9;
+            transition: border-color 0.2s;
         }
  
         .radio-group label,
@@ -231,12 +225,10 @@
             margin-bottom: 0;
         }
  
-        /* Dosya yükleme */
         .form-group input[type="file"] {
             font-size: 14px;
         }
  
-        /* Butonlar */
         .form-buttons {
             display: flex;
             gap: 15px;
@@ -256,9 +248,7 @@
             transition: background-color 0.2s;
         }
  
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
+        .btn-submit:hover { background-color: #0056b3; }
  
         .btn-reset {
             flex: 1;
@@ -273,8 +263,36 @@
             transition: background-color 0.2s;
         }
  
-        .btn-reset:hover {
-            background-color: #a71d2a;
+        .btn-reset:hover { background-color: #a71d2a; }
+ 
+        /* Hata stilleri */
+        .error-msg {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+ 
+        .input-error {
+            border-color: #dc3545 !important;
+            background-color: #fff8f8 !important;
+        }
+ 
+        .group-error {
+            border-color: #dc3545 !important;
+        }
+ 
+        /* Başarı banner */
+        .success-banner {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            text-align: center;
         }
     </style>
 </head>
@@ -295,7 +313,6 @@
     </header>
  
     <main>
-        <!-- Mevcut İletişim Bilgileri -->
         <section class="content-box">
             <h2>İletişim Bilgilerim</h2>
             <ul class="contact-list">
@@ -306,9 +323,8 @@
             </ul>
         </section>
  
-        <!-- Sağ Kolon -->
         <section class="sidebar-box">
-            <h3> Hızlı Bilgiler</h3>
+            <h3>📌 Hızlı Bilgi</h3>
             <p style="color:#555; font-size:15px; line-height:1.7; margin-top:10px;">
                 Projelerim, iş birlikleri veya herhangi bir konu hakkında benimle iletişime geçebilirsiniz.
                 Genellikle 24-48 saat içinde yanıt veririm.
@@ -318,35 +334,41 @@
             </p>
         </section>
  
-        <!-- Detaylı İletişim Formu -->
         <div class="form-section">
             <h2>Detaylı İletişim Formu</h2>
             <div class="form-container">
  
+                <div class="success-banner" id="successBanner">
+                    ✅ Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.
+                </div>
+ 
                 <div class="form-group">
                     <label for="fullname">Ad Soyad:</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Örn: Elif Güven">
+                    <input type="text" id="fullname" placeholder="Örn: Elif Güven">
+                    <span class="error-msg" id="err-fullname">Bu alanı doldurmak zorunludur.</span>
                 </div>
  
                 <div class="form-group">
                     <label for="email">E-posta Adresi:</label>
-                    <input type="email" id="email" name="email" placeholder="ornek@mail.com">
+                    <input type="email" id="email" placeholder="ornek@mail.com">
+                    <span class="error-msg" id="err-email">Bu alanı doldurmak zorunludur.</span>
                 </div>
  
                 <div class="form-group">
                     <label for="password">Başvuru Takip Şifresi:</label>
-                    <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+                    <input type="password" id="password" placeholder="Şifrenizi girin">
+                    <span class="error-msg" id="err-password">Bu alanı doldurmak zorunludur.</span>
                 </div>
  
                 <div class="form-group">
                     <label>İletişim Tercihi:</label>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="contact_pref" value="email" checked>
+                            <input type="radio" name="contact_pref" id="pref-email" value="email" checked>
                             Bana e-posta ile ulaşın
                         </label>
                         <label>
-                            <input type="radio" name="contact_pref" value="phone">
+                            <input type="radio" name="contact_pref" id="pref-phone" value="phone">
                             Bana telefonla ulaşın
                         </label>
                     </div>
@@ -354,60 +376,149 @@
  
                 <div class="form-group">
                     <label>İlgi Alanları / Yetenekler:</label>
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" id="checkboxGroup">
                         <label>
-                            <input type="checkbox" name="skills" value="html">
+                            <input type="checkbox" name="skills" value="html" id="skill-html">
                             HTML
                         </label>
                         <label>
-                            <input type="checkbox" name="skills" value="css">
+                            <input type="checkbox" name="skills" value="css" id="skill-css">
                             CSS
                         </label>
                         <label>
-                            <input type="checkbox" name="skills" value="algoritma">
+                            <input type="checkbox" name="skills" value="algoritma" id="skill-alg">
                             Algoritma
                         </label>
                     </div>
+                    <span class="error-msg" id="err-skills">En az bir ilgi alanı seçmek zorunludur.</span>
                 </div>
  
                 <div class="form-group">
                     <label for="konu">Konu:</label>
-                    <select id="konu" name="konu">
-                        <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                    <select id="konu">
+                        <option value="">Lütfen bir konu seçin...</option>
                         <option value="isBirligi">İş Birliği</option>
                         <option value="proje">Proje Teklifi</option>
                         <option value="staj">Staj / İş Fırsatı</option>
                         <option value="diger">Diğer</option>
                     </select>
+                    <span class="error-msg" id="err-konu">Bu alanı doldurmak zorunludur.</span>
                 </div>
  
                 <div class="form-group">
                     <label for="cv">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
-                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.jpg,.png">
+                    <input type="file" id="cv" accept=".pdf,.doc,.docx,.jpg,.png">
                 </div>
  
                 <div class="form-group">
                     <label for="mesaj">Mesajınız:</label>
-                    <textarea id="mesaj" name="mesaj" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+                    <textarea id="mesaj" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+                    <span class="error-msg" id="err-mesaj">Bu alanı doldurmak zorunludur.</span>
                 </div>
  
                 <div class="form-buttons">
-                    <button type="submit" class="btn-submit">Gönder</button>
-                    <button type="reset" class="btn-reset">Temizle</button>
+                    <button type="button" class="btn-submit" onclick="gonderimiDogrula()">Gönder</button>
+                    <button type="button" class="btn-reset" onclick="formuTemizle()">Temizle</button>
                 </div>
  
             </div>
         </div>
  
-        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+        <a href="index.html" class="back-link">&#8592; Ana Sayfaya Dön</a>
     </main>
  
     <footer>
         <p>© 2025 Elif Güven | Web Programlama.</p>
     </footer>
  
+    <script>
+        function formuTemizle() {
+            document.getElementById('fullname').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('konu').value = '';
+            document.getElementById('mesaj').value = '';
+            document.getElementById('cv').value = '';
+ 
+            document.getElementById('pref-email').checked = true;
+            document.getElementById('pref-phone').checked = false;
+ 
+            document.getElementById('skill-html').checked = false;
+            document.getElementById('skill-css').checked = false;
+            document.getElementById('skill-alg').checked = false;
+ 
+            tumHatalariGizle();
+            document.getElementById('successBanner').style.display = 'none';
+        }
+ 
+        function tumHatalariGizle() {
+            document.querySelectorAll('.error-msg').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.input-error').forEach(function(el) {
+                el.classList.remove('input-error');
+            });
+            document.getElementById('checkboxGroup').classList.remove('group-error');
+        }
+ 
+        function hataGoster(inputId, errId) {
+            var input = document.getElementById(inputId);
+            var err = document.getElementById(errId);
+            if (input) input.classList.add('input-error');
+            if (err) err.style.display = 'block';
+        }
+ 
+        function gonderimiDogrula() {
+            tumHatalariGizle();
+            var gecerli = true;
+ 
+            if (!document.getElementById('fullname').value.trim()) {
+                hataGoster('fullname', 'err-fullname');
+                gecerli = false;
+            }
+ 
+            if (!document.getElementById('email').value.trim()) {
+                hataGoster('email', 'err-email');
+                gecerli = false;
+            }
+ 
+            if (!document.getElementById('password').value.trim()) {
+                hataGoster('password', 'err-password');
+                gecerli = false;
+            }
+ 
+            if (document.querySelectorAll('input[name="skills"]:checked').length === 0) {
+                document.getElementById('checkboxGroup').classList.add('group-error');
+                document.getElementById('err-skills').style.display = 'block';
+                gecerli = false;
+            }
+ 
+            if (!document.getElementById('konu').value) {
+                hataGoster('konu', 'err-konu');
+                gecerli = false;
+            }
+ 
+            if (!document.getElementById('mesaj').value.trim()) {
+                hataGoster('mesaj', 'err-mesaj');
+                gecerli = false;
+            }
+ 
+            if (gecerli) {
+                var banner = document.getElementById('successBanner');
+                banner.style.display = 'block';
+                banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                formuTemizle();
+                banner.style.display = 'block'; // formuTemizle gizledi, tekrar göster
+                setTimeout(function() {
+                    banner.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+ 
 </body>
 </html>
+
 
 
 
