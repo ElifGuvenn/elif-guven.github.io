@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flexbox Örneği</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f4f0;
+      --surface: #ffffff;
+      --border: #e2e0da;
+      --text: #1a1916;
+      --muted: #6b6860;
+      --accent: #3b5bdb;
+      --accent-hover: #2f4ab8;
+      --green: #2f9e44;
+      --green-bg: #d3f9d8;
+      --peach: #e67700;
+      --peach-bg: #fff3bf;
+      --blue-bg: #dbe4ff;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100%;
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      height: 10vh;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4vw;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ── */
+    .hero {
+      height: 30vh;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 0 4vw;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 360px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      align-self: flex-start;
+    }
+
+    .card .btn {
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .grow-box .btn {
+      align-self: stretch;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59,91,219,0.35);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-green:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .btn-peach {
+      background: var(--peach);
+      color: #fff;
+    }
+    .btn-peach:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .hero-image {
+      flex: 0 0 260px;
+      background: var(--bg);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin: 2vh 0;
+    }
+
+    .hero-image svg { opacity: 0.4; }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      padding: 0 4vw;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 2vh 0 1.5vh;
+    }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--blue-bg);
+      color: var(--accent);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    /* ── CARDS ── */
+    .cards-section {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2vh;
+    }
+
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      min-height: 18vh;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1 1 180px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    /* ── FLEX GROW ── */
+    .grow-section {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2vh;
+    }
+
+    .grow-row {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      height: 14vh;
+      align-items: stretch;
+    }
+
+    .grow-box {
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .grow-box:hover { transform: scale(1.015); }
+
+    .grow-box .box-label {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .grow-box .box-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .box-blue  { background: var(--blue-bg);  flex-grow: 1; }
+    .box-green { background: var(--green-bg); flex-grow: 2; }
+    .box-peach { background: var(--peach-bg); flex-grow: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      height: 10vh;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    footer span { color: var(--accent); margin: 0 0.25rem; }
+
+    /* ── DIVIDER LABELS (tiny pills under sections) ── */
+    .css-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.75rem 0 1.5rem;
+    }
+
+    .pill {
+      font-size: 0.68rem;
+      font-family: 'Courier New', monospace;
+      background: #eeecea;
+      color: #7a7870;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <a href="#" class="logo">FlexBox</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Ana Sayfa</a></li>
+      <li><a href="#cards">Hakkında</a></li>
+      <li><a href="#grow">Dersler</a></li>
+      <li><a href="#footer">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Hero Başlık</h1>
+        <p>Açıklama metni — flex-direction: row, align-items: stretch ile iki kolon yan yana.</p>
+        <button class="btn btn-primary" onclick="alert('Butona tıkladınız! 🎉')">Buton</button>
+      </div>
+      <div class="hero-image">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="40" height="32" rx="4" stroke="#9ca3af" stroke-width="2"/>
+          <circle cx="16" cy="20" r="4" stroke="#9ca3af" stroke-width="2"/>
+          <path d="M4 34l10-8 8 6 8-10 14 12" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Görsel Alanı</span>
+      </div>
+    </div>
+    <div class="css-pills">
+      <span class="pill">flex-direction: row</span>
+      <span class="pill">height: 30vh</span>
+      <span class="pill">align-items: stretch</span>
+      <span class="pill">justify-content: space-between</span>
+    </div>
+  </section>
+
+  <!-- ── CARDS ── -->
+  <section id="cards" class="cards-section">
+    <div class="section-header">
+      <h2>Kartlar Bölümü</h2>
+      <span class="tag">multiple items</span>
+      <span class="tag">flex-wrap</span>
+    </div>
+    <div class="cards-grid">
+      <!-- 4 kart -->
+      <div class="card">
+        <h3>Kart Başlığı</h3>
+        <p>Kısa açıklama</p>
+        <button class="btn btn-primary" onclick="alert('Kart 1 tıklandı!')">Buton</button>
+      </div>
+      <div class="card">
+        <h3>Kart Başlığı</h3>
+        <p>Kısa açıklama</p>
+        <button class="btn btn-primary" onclick="alert('Kart 2 tıklandı!')">Buton</button>
+      </div>
+      <div class="card">
+        <h3>Kart Başlığı</h3>
+        <p>Kısa açıklama</p>
+        <button class="btn btn-primary" onclick="alert('Kart 3 tıklandı!')">Buton</button>
+      </div>
+      <div class="card">
+        <h3>Kart Başlığı</h3>
+        <p>Kısa açıklama</p>
+        <button class="btn btn-primary" onclick="alert('Kart 4 tıklandı!')">Buton</button>
+      </div>
+    </div>
+    <div class="css-pills">
+      <span class="pill">display: flex</span>
+      <span class="pill">flex-wrap: wrap</span>
+      <span class="pill">gap: 1rem</span>
+    </div>
+  </section>
+
+  <!-- ── FLEX GROW (butonlu) ── -->
+  <section id="grow" class="grow-section">
+    <div class="section-header">
+      <h2>Flex Grow Uygulama</h2>
+      <span class="tag">flex-grow</span>
+      <span class="tag">height: 20vh</span>
+      <span class="tag">stretch (esneme)</span>
+    </div>
+    <div class="grow-row">
+      <div class="grow-box box-blue">
+        <div>
+          <div class="box-label">1 Kutu</div>
+          <div class="box-meta">flex-grow: 1;</div>
+        </div>
+        <button class="btn btn-primary" onclick="alert('Kutu 1!')">Buton</button>
+      </div>
+      <div class="grow-box box-green">
+        <div>
+          <div class="box-label">2 Kutu</div>
+          <div class="box-meta">flex-grow: 2;</div>
+        </div>
+        <button class="btn btn-green" onclick="alert('Kutu 2!')">Buton</button>
+      </div>
+      <div class="grow-box box-peach">
+        <div>
+          <div class="box-label">3 Kutu</div>
+          <div class="box-meta">flex-grow: 1;</div>
+        </div>
+        <button class="btn btn-peach" onclick="alert('Kutu 3!')">Buton</button>
+      </div>
+    </div>
+    <div class="css-pills">
+      <span class="pill">multiple items</span>
+      <span class="pill">flex layout + wrap</span>
+      <span class="pill">gap + align/hizalama</span>
+    </div>
+  </section>
+
+  <!-- ── FLEX GROW (butonsuz recap) ── -->
+  <section class="grow-section">
+    <div class="section-header">
+      <h2>Flex Grow Uygulama</h2>
+      <span class="tag">flex-grow</span>
+      <span class="tag">height: 20vh</span>
+      <span class="tag">stretch (esneme)</span>
+    </div>
+    <div class="grow-row">
+      <div class="grow-box box-blue">
+        <div class="box-label">1 Kutu</div>
+        <div class="box-meta">flex-grow: 1;</div>
+      </div>
+      <div class="grow-box box-green">
+        <div class="box-label">2 Kutu</div>
+        <div class="box-meta">flex-grow: 2;</div>
+      </div>
+      <div class="grow-box box-peach">
+        <div class="box-label">3 Kutu</div>
+        <div class="box-meta">flex-grow: 1;</div>
+      </div>
+    </div>
+    <div class="css-pills">
+      <span class="pill">flex-grow</span>
+      <span class="pill">height: 20vh</span>
+      <span class="pill">stretch (esneme)</span>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer">
+    © 2026 — <span>Temel Flexbox Örneği</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
