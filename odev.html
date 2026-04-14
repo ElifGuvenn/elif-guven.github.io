@@ -34,33 +34,38 @@
             color: #333;
         }
 
-        /* Hiyerarşik Seçici 2: nav a */
-        nav {
-            display: inline-block;
-            width: 48%;
-            text-align: right;
-        }
+     nav {
+      height: 10vh;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4vw;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }.nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-        nav ul li {
-            display: inline-block; /* Menüyü yatay yapmak için */
-            margin-left: 10px;
-        }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #444;
-            background-color: #e7effd;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        /* Link Hover Efekti */
-        nav ul li a:hover {
-            background-color: #4a90e2;
-            color: white;
-        }
+ .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
 
         .header-alt {
             margin-top: 15px;
@@ -126,7 +131,7 @@
 
     <header>
         <h1>Elif Güven</h1>
-        <nav>
+        <nav class = "nav-links">
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
                 <li><a href="about.html">Hakkımda</a></li>
