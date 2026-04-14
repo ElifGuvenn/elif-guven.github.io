@@ -32,32 +32,38 @@
             color: #2c3e50;
         }
 
-        header nav {
-            display: inline-block;
-            width: 53%;
-            text-align: right;
-        }
+       nav {
+      height: 10vh;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4vw;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }.nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+ .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
 
-        nav ul li {
-            display: inline-block;
-            margin-left: 10px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #444;
-            background-color: #e7effd;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
+       
         .header-sub {
             margin-top: 15px;
             color: #555;
