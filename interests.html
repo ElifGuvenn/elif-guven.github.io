@@ -62,6 +62,19 @@
       transition: color 0.2s;
       position: relative;
     }
+        .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { transform: scaleX(1); } 
 
        
         .header-sub {
