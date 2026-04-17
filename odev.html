@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Programlama CSS Ödevi</title>
     <style>
-        /* --- CSS BAŞLANGIÇ --- */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #e2e0da;
+  --text: #1a1916;
+  --muted: #6b6860;
+  --accent: #3b5bdb;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+}
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,26 +23,45 @@
             font-family: "Times New Roman", Times, serif;
         }
 
-        body {
-            background-color: #f4f4f9;
-            padding: 40px 60px;
-        }
+      body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
 
-        /* --- HEADER --- */
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px 8px 0 0;
-        }
+h2 {
+    font-family: 'DM Serif Display', serif;
+    margin-bottom: 1rem;
+}
 
-        /* Hiyerarşik Seçici 1: header içindeki h1 */
-        header h1 {
-            display: inline-block;
-            width: 50%;
-            font-size: 24px;
-            color: #333;
-        }
+p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* Listeleri modernleştir */
+ul, ol {
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+      header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4vw;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    font-family: 'DM Serif Display', serif; /* Modern başlık fontu */
+    color: var(--accent);
+}
 
      nav {
       height: 10vh;
@@ -53,11 +82,11 @@
     }
 
 
- .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+.nav-links ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
@@ -89,48 +118,30 @@
             color: #555;
         }
 
-        /* --- MAIN CONTENT (İKİ SÜTUN) --- */
-        main {
-            background-color: #fff;
-            padding: 20px;
-            border-left: 1px solid #ccc;
-            border-right: 1px solid #ccc;
-        }
+       main {
+    display: flex;          /* Yan yana getirir */
+    gap: 2rem;             /* Aralarındaki boşluk */
+    padding: 40px 4vw;
+    background-color: var(--bg);
+}
 
-        .content-box, .sidebar-box {
-            display: inline-block; /* Kutuları yan yana getirir */
-            vertical-align: top;
-            padding: 20px;
-            min-height: 300px;
-            border-radius: 6px;
-        }
+.content-box {
+    flex: 2;               /* Sol taraf daha geniş olsun (2 birim) */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
 
-        .content-box {
-            width: 63%;
-            background-color: #fff9e6; /* Görseldeki sarımtırak */
-            border: 1px solid #ffeeba;
-            margin-right: 2%;
-        }
+.sidebar-box {
+    flex: 1;              
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
 
-        .sidebar-box {
-            width: 33%;
-            background-color: #e7f3ff; /* Görseldeki mavimsi */
-            border: 1px solid #b8daff;
-        }
-
-        /* Grup Seçici: h3 ve p etiketlerini beraber düzenler */
-        h3, p {
-            margin-bottom: 12px;
-            color: #2c3e50;
-        }
-
-        /* Metin Düzenlemeleri */
-        p {
-            font-size: 15px;
-            line-height: 1.5;
-            text-align: left;
-        }
-
+      
         /* --- FOOTER --- */
         footer {
             background-color: #eee;
