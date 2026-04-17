@@ -151,11 +151,14 @@
         <label>Değer:</label>
         <input type="number" id="unitValue" placeholder="Sayı giriniz">
         <label>Dönüşüm:</label>
-        <select id="unitType">
-          <option value="m-km">Metre ➔ Kilometre</option>
-          <option value="c-f">Celsius ➔ Fahrenheit</option>
-          <option value="kg-g">Kilogram ➔ Gram</option>
-        </select>
+       <select id="unitType">
+  <option value="m-km">Metre ➔ Kilometre</option>
+  <option value="km-m">Kilometre ➔ Metre</option>
+  <option value="c-f">Celsius ➔ Fahrenheit</option>
+  <option value="f-c">Fahrenheit ➔ Celsius</option>
+  <option value="kg-g">Kilogram ➔ Gram</option>
+  <option value="g-kg">Gram ➔ Kilogram</option>
+</select>
         <button class="main-btn" onclick="donustur()">Dönüştür</button>
       </div>
 
@@ -206,19 +209,29 @@
 
   // --- UYGULAMA 2 MANTIĞI ---
   function donustur() {
-    const val = parseFloat(document.getElementById('unitValue').value);
-    const type = document.getElementById('unitType').value;
-    let res = 0;
+  const val = parseFloat(document.getElementById('unitValue').value);
+  const type = document.getElementById('unitType').value;
+  let res = "";
 
-    if(isNaN(val)) return alert("Sayı giriniz!");
+  if(isNaN(val)) return alert("Lütfen geçerli bir sayı giriniz!");
 
-    if(type === "m-km") res = val / 1000 + " km";
-    else if(type === "c-f") res = (val * 1.8 + 32).toFixed(2) + " °F";
-    else res = val * 1000 + " gr";
-
-    document.getElementById('resVal').innerText = res;
-    document.getElementById('birimSonuc').style.display = "block";
+  switch(type) {
+    // Uzunluk
+    case "m-km": res = (val / 1000).toLocaleString() + " km"; break;
+    case "km-m": res = (val * 1000).toLocaleString() + " m"; break;
+    
+    // Sıcaklık
+    case "c-f": res = (val * 1.8 + 32).toFixed(2) + " °F"; break;
+    case "f-c": res = ((val - 32) / 1.8).toFixed(2) + " °C"; break;
+    
+    // Ağırlık
+    case "kg-g": res = (val * 1000).toLocaleString() + " gr"; break;
+    case "g-kg": res = (val / 1000).toLocaleString() + " kg"; break;
   }
+
+  document.getElementById('resVal').innerText = res;
+  document.getElementById('birimSonuc').style.display = "block";
+}
 </script>
 
 </body>
