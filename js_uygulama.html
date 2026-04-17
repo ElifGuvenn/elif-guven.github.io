@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Uygulamaları | Sekmeli Görünüm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --surface: #ffffff;
+      --border: #e2e0da;
+      --text: #1a1916;
+      --muted: #6b6860;
+      --accent: #3b5bdb;
+      --accent-hover: #2f4ab8;
+      --radius: 12px;
+      --shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); padding: 40px 4vw; }
+
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-family: 'DM Serif Display', serif; text-align: center; margin-bottom: 30px; }
+
+    /* --- TAB SİSTEMİ STİLLERİ --- */
+    .tab-menu {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: var(--muted);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(59,91,219,0.3);
+    }
+
+    /* --- İÇERİK ALANLARI --- */
+    .app-content {
+      display: none; /* Varsayılan olarak kapalı */
+      animation: fadeIn 0.4s ease;
+    }
+
+    .app-content.active {
+      display: block; /* Sadece active olan görünür */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- KART VE FORM STİLLERİ --- */
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+    
+    input, select {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+    }
+
+    .main-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      border-left: 4px solid var(--accent);
+    }
+
+    .success-badge {
+      background: #d3f9d8;
+      color: #2f9e44;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>JS Atölyesi</h1>
+
+  <div class="tab-menu">
+    <button class="tab-btn active" onclick="openTab(event, 'app1')">Not Hesaplama</button>
+    <button class="tab-btn" onclick="openTab(event, 'app2')">Birim Dönüştürücü</button>
+  </div>
+
+  <div id="app1" class="app-content active">
+    <section class="app-card">
+      <h2>Öğrenci Not Hesaplama</h2>
+      <p style="color: var(--muted); font-size: 0.9rem;">Vize (%40) ve Final (%60) notuna göre sonuç üretir.</p>
+      
+      <div class="form-group">
+        <input type="text" id="studentName" placeholder="Öğrenci Adı Soyadı">
+        <input type="number" id="vizeNotu" placeholder="Vize Notu">
+        <input type="number" id="finalNotu" placeholder="Final Notu">
+        <button class="main-btn" onclick="hesaplaNot()">Hesapla</button>
+      </div>
+
+      <div id="notSonuc" class="result-box" style="display:none;">
+        <h3 id="resName"></h3>
+        <p>Ortalama: <b id="resOrt"></b></p>
+        <p>Harf Notu: <b id="resHarf"></b></p>
+        <p>Durum: <span id="resDurum"></span></p>
+      </div>
+    </section>
+  </div>
+
+  <div id="app2" class="app-content">
+    <section class="app-card">
+      <h2>Birim Dönüştürücü</h2>
+      <p style="color: var(--muted); font-size: 0.9rem;">Mühendislik birimlerini saniyeler içinde çevirin.</p>
+      
+      <div class="form-group">
+        <label>Değer:</label>
+        <input type="number" id="unitValue" placeholder="Sayı giriniz">
+        <label>Dönüşüm:</label>
+        <select id="unitType">
+          <option value="m-km">Metre ➔ Kilometre</option>
+          <option value="c-f">Celsius ➔ Fahrenheit</option>
+          <option value="kg-g">Kilogram ➔ Gram</option>
+        </select>
+        <button class="main-btn" onclick="donustur()">Dönüştür</button>
+      </div>
+
+      <div id="birimSonuc" class="success-badge" style="display:none;">
+        Sonuç: <span id="resVal"></span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  // --- SEKME DEĞİŞTİRME FONKSİYONU ---
+  function openTab(evt, tabName) {
+    // Tüm içerikleri gizle
+    const contents = document.getElementsByClassName("app-content");
+    for (let i = 0; i < contents.length; i++) {
+      contents[i].classList.remove("active");
+    }
+
+    // Tüm butonların 'active' sınıfını kaldır
+    const buttons = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("active");
+    }
+
+    // Seçilen içeriği göster ve butonu aktif yap
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+  }
+
+  // --- UYGULAMA 1 MANTIĞI ---
+  function hesaplaNot() {
+    const ad = document.getElementById('studentName').value;
+    const v = parseFloat(document.getElementById('vizeNotu').value);
+    const f = parseFloat(document.getElementById('finalNotu').value);
+
+    if(!ad || isNaN(v) || isNaN(f)) return alert("Eksik bilgi!");
+
+    const ort = (v * 0.4) + (f * 0.6);
+    let harf = ort >= 90 ? "AA" : ort >= 70 ? "BB" : ort >= 50 ? "CC" : "FF";
+    
+    document.getElementById('resName').innerText = ad;
+    document.getElementById('resOrt').innerText = ort.toFixed(2);
+    document.getElementById('resHarf').innerText = harf;
+    document.getElementById('resDurum').innerText = ort >= 50 ? "Geçti ✅" : "Kaldı ❌";
+    document.getElementById('notSonuc').style.display = "block";
+  }
+
+  // --- UYGULAMA 2 MANTIĞI ---
+  function donustur() {
+    const val = parseFloat(document.getElementById('unitValue').value);
+    const type = document.getElementById('unitType').value;
+    let res = 0;
+
+    if(isNaN(val)) return alert("Sayı giriniz!");
+
+    if(type === "m-km") res = val / 1000 + " km";
+    else if(type === "c-f") res = (val * 1.8 + 32).toFixed(2) + " °F";
+    else res = val * 1000 + " gr";
+
+    document.getElementById('resVal').innerText = res;
+    document.getElementById('birimSonuc').style.display = "block";
+  }
+</script>
+
+</body>
+</html>
