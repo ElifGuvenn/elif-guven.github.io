@@ -1,13 +1,10 @@
-// scripts/hafta7.js
-// Hafta 7 – İki etkileşim: (1) tema değiştirme, (2) form özeti üretme
-
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* ================================================
-     1) TEMA DEĞİŞTİRME
-  ================================================ */
   const temaBtn = document.getElementById("temaBtn");
+  const form = document.getElementById("basvuruForm");
+  const sonucAlani = document.getElementById("sonucAlani");
+  const temizleBtn = document.getElementById("temizleBtn");
 
+  // Tema Değiştirme
   temaBtn.addEventListener("click", function () {
     document.body.classList.toggle("dark-theme");
     temaBtn.textContent = document.body.classList.contains("dark-theme")
@@ -15,76 +12,45 @@ document.addEventListener("DOMContentLoaded", function () {
       : "🌙 Koyu Temaya Geç";
   });
 
-
-  /* ================================================
-     2) FORM ÖZETİ OLUŞTURMA
-  ================================================ */
-  const form       = document.getElementById("basvuruForm");
-  const sonucAlani = document.getElementById("sonucAlani");
-  const temizleBtn = document.getElementById("temizleBtn");
-
+  // Form İşlemi
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Sayfa yenilenmesin
+    e.preventDefault();
 
-    const ad      = document.getElementById("adSoyad").value.trim();
-    const email   = document.getElementById("email").value.trim();
-    const bolum   = document.getElementById("bolum").value.trim();
-    const sinif   = document.getElementById("sinif").value;
-    const oturum  = document.getElementById("oturum").value;
-    const katilim = document.getElementById("katilimTuru").value;
-    const mesaj   = document.getElementById("mesaj").value.trim();
-    const onay    = document.getElementById("onayCheck").checked;
+    const ad = document.getElementById("adSoyad").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const bolum = document.getElementById("bolum").value.trim();
+    const sinif = document.getElementById("sinif").value;
+    const onay = document.getElementById("onayCheck").checked;
 
-    // Zorunlu alan kontrolü
-    if (!ad || !email || !bolum || !sinif || !oturum || !katilim) {
-      sonucAlani.innerHTML = `<div class="uyari-kutu">⚠️ Lütfen tüm zorunlu alanları doldurun.</div>`;
-      sonucAlani.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (!ad || !email || !bolum || !sinif) {
+      sonucAlani.innerHTML = `<div class="uyari-kutu text-center">⚠️ Lütfen tüm alanları doldurun.</div>`;
       return;
     }
 
     if (!onay) {
-      sonucAlani.innerHTML = `<div class="uyari-kutu">⚠️ Devam etmek için onay kutusunu işaretleyin.</div>`;
-      sonucAlani.scrollIntoView({ behavior: "smooth", block: "center" });
+      sonucAlani.innerHTML = `<div class="uyari-kutu text-center">⚠️ Kullanım şartlarını onaylayın.</div>`;
       return;
     }
 
-    const tarih = new Date().toLocaleDateString("tr-TR", {
-      day: "2-digit", month: "long", year: "numeric"
-    });
-
     sonucAlani.innerHTML = `
-      <div class="ozet-kart">
-        <div class="ozet-ust">
+      <div class="ozet-kart shadow">
+        <div class="ozet-ust d-flex justify-content-between">
           <span>✅ Başvuru Özeti</span>
-          <span style="font-weight:400; font-size:0.8rem;">${tarih}</span>
+          <span class="small fw-normal">${new Date().toLocaleDateString('tr-TR')}</span>
         </div>
-        <div class="ozet-govde">
-          <div class="alan"><label>Ad Soyad</label><span>${guvenliyaz(ad)}</span></div>
-          <div class="alan"><label>E-posta</label><span>${guvenliyaz(email)}</span></div>
-          <div class="alan"><label>Bölüm</label><span>${guvenliyaz(bolum)}</span></div>
-          <div class="alan"><label>Sınıf</label><span>${guvenliyaz(sinif)}</span></div>
-          <div class="alan"><label>Oturum</label><span>${guvenliyaz(oturum)}</span></div>
-          <div class="alan"><label>Katılım Türü</label><span>${guvenliyaz(katilim)}</span></div>
-          ${mesaj ? `<div class="alan" style="grid-column:1/-1"><label>Mesaj</label><span>${guvenliyaz(mesaj)}</span></div>` : ""}
+        <div class="ozet-govde bg-white text-dark">
+          <div class="alan"><label>Ad Soyad</label><span>${ad}</span></div>
+          <div class="alan"><label>E-posta</label><span>${email}</span></div>
+          <div class="alan"><label>Bölüm</label><span>${bolum}</span></div>
+          <div class="alan"><label>Sınıf</label><span>${sinif}</span></div>
         </div>
-        <div class="ozet-alt">Başvurunuz alındı. Etkinlik günü Lab 205'te görüşmek üzere!</div>
       </div>`;
-
-    sonucAlani.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    sonucAlani.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
-  temizleBtn.addEventListener("click", function () {
+  temizleBtn.addEventListener("click", () => {
     form.reset();
-    sonucAlani.innerHTML = `<p style="color:var(--muted,#6b6860); margin:0; font-size:0.9rem;">
-      Henüz başvuru özeti oluşturulmadı.
-      <span style="color:var(--accent,#3b5bdb);">Formu doldurduktan sonra sonuç burada görünecek.</span>
-    </p>`;
+    sonucAlani.innerHTML = `<p class="mb-0 text-secondary">Henüz başvuru yapılmadı. Sonuç burada görünecek.</p>`;
   });
-
-  function guvenliyaz(str) {
-    return str
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-  }
-
 });
