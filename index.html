@@ -13,7 +13,6 @@
             font-family: "Times New Roman", Times, serif;
         }
 
-        /* Bu kısmı <style> etiketinin en başına ekle */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
 
 :root {
@@ -43,7 +42,6 @@ p {
     line-height: 1.7;
 }
 
-/* Listeleri modernleştir */
 ul, ol {
     padding-left: 20px;
     color: var(--muted);
@@ -53,7 +51,6 @@ li {
     margin-bottom: 8px;
 }
 
-      
 header {
     display: flex;
     justify-content: space-between;
@@ -64,7 +61,7 @@ header {
 }
 
 header h1 {
-    font-family: 'DM Serif Display', serif; /* Modern başlık fontu */
+    font-family: 'DM Serif Display', serif;
     color: var(--accent);
 }
 
@@ -74,79 +71,96 @@ header h1 {
     list-style: none;
 }
   
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-    }
+.nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+}
 
-   .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.2s;
-    }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
 
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { transform: scaleX(1); } 
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { transform: scaleX(1); }
 
-        .header-sub {
-            margin-top: 15px;
-            color: #555;
-            border-top: 1px solid #eee;
-            padding-top: 10px;
-        }
+.header-sub {
+    margin-top: 15px;
+    color: #555;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
 
-      main {
-    display: flex;         
-    gap: 2rem;            
+main {
+    display: flex;
+    gap: 2rem;
     padding: 40px 4vw;
     background-color: var(--bg);
 }
 
 .content-box {
-    flex: 2;               /* Sol taraf daha geniş olsun (2 birim) */
+    flex: 2;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    padding: 2rem;
 }
 
 .sidebar-box {
-    flex: 1;               /* Sağ taraf daha dar olsun (1 birim) */
+    flex: 1;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    padding: 1.5rem;
 }
 
-        h3 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
+h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 0 0 10px 10px;
-        }
+footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Sadece bu buton için eklenen stil */
+.hafta7-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.2s;
+}
+.hafta7-btn:hover { background-color: #2f4cc7; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Elif Güven</h1>
-        <nav class= "nav-links">
+        <nav class="nav-links">
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
                 <li><a href="about.html">Hakkımda</a></li>
@@ -156,7 +170,6 @@ header h1 {
                 <li><a href="flexbox.html">Flexbox Sayfası</a></li>
                 <li><a href="lab-position.html">Duyurular</a></li>
                 <li><a href="js_uygulama.html">Js İşlemleri</a></li>
-                
             </ul>
         </nav>
         <p class="header-sub"><b>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</b></p>
@@ -175,6 +188,9 @@ header h1 {
                 <li>JavaScript ile etkileşim eklemek</li>
                 <li>ASP.NET Core ile dinamik site geliştirmek</li>
             </ol>
+
+            <!-- Sadece bu satır eklendi -->
+            <a href="hafta7.html" class="hafta7-btn">Hafta 7 Uygulamasına Git →</a>
         </section>
 
         <aside class="sidebar-box">
