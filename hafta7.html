@@ -5,19 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hafta 7 – Bootstrap + JavaScript | Elif Güven</title>
 
-  <!-- Google Fonts – index.html ile aynı -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    /* ---- index.html ile birebir aynı temel değişkenler ve stiller ---- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
-
+    /* Temel Değişkenler */
     :root {
       --bg: #f5f4f0;
       --surface: #ffffff;
@@ -33,410 +27,191 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
       color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     h2 { font-family: 'DM Serif Display', serif; margin-bottom: 1rem; }
-    h3 { margin-bottom: 15px; color: #2c3e50; }
+    
+    .sayfa { padding: 60px 0; }
 
-    p  { color: var(--muted); line-height: 1.7; }
-    ul, ol { padding-left: 20px; color: var(--muted); }
-    li { margin-bottom: 8px; }
-
-    /* HEADER – index.html ile birebir aynı */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 4vw;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    header h1 { font-family: 'DM Serif Display', serif; color: var(--accent); }
-
-    .nav-links ul { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-
-    .header-sub { margin-top: 15px; color: #555; border-top: 1px solid #eee; padding-top: 10px; }
-
-    /* FOOTER – index.html ile birebir aynı */
-    footer {
-      background-color: #fff;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid #ddd;
-      border-radius: 0 0 10px 10px;
-    }
-    footer p { color: var(--muted); }
-
-    /* ---- Sayfa içi genel ---- */
-    .sayfa { padding: 40px 4vw; }
-
-    /* index.html'deki content-box ile aynı stil */
+    /* İçerik Kutusu */
     .content-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      padding: 2.5rem;
+      height: 100%;
     }
 
-    .sidebar-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-    }
-
-    /* Bölüm başlığı – site aksanıyla uyumlu */
     .bolum-baslik {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: var(--text);
-      margin-bottom: 1rem;
-      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
 
-    /* Kart */
-    .kart {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.4rem 1.6rem;
-      height: 100%;
-    }
-    .kart h5 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text);
-    }
-    .kart p { font-size: 0.87rem; }
-
-    /* Butonlar */
-    .btn-mavi {
-      display: inline-block;
-      padding: 0.48rem 1.1rem;
-      background-color: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: background 0.2s;
-    }
-    .btn-mavi:hover { background-color: #2f4cc7; color: #fff; }
-
-    .btn-cizgi {
-      display: inline-block;
-      padding: 0.48rem 1.1rem;
-      background: none;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-cizgi:hover { background-color: var(--accent); color: #fff; }
-
-    /* Rozet */
     .rozet {
       display: inline-block;
       background-color: var(--accent);
       color: #fff;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.2rem 0.65rem;
+      padding: 0.25rem 0.75rem;
       border-radius: 6px;
-      margin-bottom: 0.7rem;
+      margin-bottom: 1rem;
     }
-
-    /* Form */
-    .form-control, .form-select {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.9rem;
-      border-color: var(--border);
-      border-radius: 8px;
-    }
-    .form-control:focus, .form-select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 0.15rem rgba(59,91,219,0.15);
-    }
-    .form-label { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
   </style>
 
-  <!-- Hafta 7 ek stilleri (karanlık tema vb.) -->
   <link rel="stylesheet" href="styles/hafta7.css">
 </head>
 <body>
 
-  <!-- ===== HEADER – index.html ile birebir aynı ===== -->
-  <header>
-    <h1>Elif Güven</h1>
-    <nav class="nav-links">
-      <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="interests.html">İlgi Alanlarım</a></li>
-        <li><a href="contact.html">İletişim</a></li>
-        <li><a href="odev.html">Css Sayfası</a></li>
-        <li><a href="flexbox.html">Flexbox Sayfası</a></li>
-        <li><a href="lab-position.html">Duyurular</a></li>
-        <li><a href="js_uygulama.html">Js İşlemleri</a></li>
-      </ul>
-    </nav>
-    <p class="header-sub"><b>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</b></p>
-  </header>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom py-3 sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#" style="font-family: 'DM Serif Display', serif; color: var(--accent); font-size: 1.5rem;">Elif Güven</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Hakkımda</a></li>
+          <li class="nav-item"><a class="nav-link" href="interests.html">İlgi Alanlarım</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+          <li class="nav-item"><a class="nav-link active" href="hafta7.html">Hafta 7</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- ===== HERO ===== -->
-  <div class="sayfa">
-    <div class="row g-4 align-items-start">
-
+  <div class="container sayfa">
+    <div class="row g-4 align-items-stretch">
       <div class="col-lg-8">
         <div class="content-box">
           <span class="rozet">Hafta 7 Laboratuvarı</span>
           <h2>Bootstrap ve JavaScript ile Etkinlik Kayıt Sayfası</h2>
-          <p>
-            Bu sayfada Bootstrap ile responsive bir arayüz tasarlanır; JavaScript ile tema değiştirme
-            ve form verilerinden başvuru özeti üretme işlemleri yapılır.
+          <p class="lead text-secondary">
+            Bu projede Bootstrap bileşenleri ve JavaScript DOM etkileşimleri bir arada kullanılmıştır.
           </p>
-          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.2rem;">
-            <a href="#basvuru" class="btn-mavi">Başvuru Formuna Git</a>
-            <button id="temaBtn" class="btn-tema">🌙 Koyu Temaya Geç</button>
+          <div class="d-flex gap-2 mt-4 flex-wrap">
+            <a href="#basvuru" class="btn btn-primary px-4 py-2" style="background-color: var(--accent); border: none;">Başvuru Formuna Git</a>
+            <button id="temaBtn" class="btn btn-outline-primary px-4 py-2">🌙 Koyu Temaya Geç</button>
           </div>
         </div>
       </div>
-
       <div class="col-lg-4">
-        <div class="sidebar-box">
-          <h3>Neler Kullanıldı?</h3>
-          <ul>
-            <li>Bootstrap CDN – hazır bileşenler</li>
-            <li>Grid sistemi – responsive yerleşim</li>
-            <li>JavaScript DOM etkileşimi</li>
-            <li><code>classList.toggle</code> – tema değiştirme</li>
-            <li><code>innerHTML</code> – dinamik içerik</li>
+        <div class="content-box">
+          <h3 class="h5 fw-bold mb-3">Neler Kullanıldı?</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2">✅ Bootstrap Navbar & Grid</li>
+            <li class="mb-2">✅ Bootstrap Cards & Forms</li>
+            <li class="mb-2">✅ JavaScript Event Listeners</li>
+            <li class="mb-2">✅ Dark Mode Toggle</li>
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== ATÖLYE KARTLARI ===== -->
-  <div class="sayfa" style="padding-top:0;" id="atolyeler">
+  <div class="container sayfa pt-0" id="atolyeler">
     <div class="content-box">
       <div class="bolum-baslik">Atölye İçerikleri</div>
-      <p style="margin-bottom:1.2rem; font-size:0.88rem;">
-        Bootstrap bileşenleri kullanılarak tasarlanmış örnek kartlar.
-      </p>
-
-      <!-- Bootstrap Grid – 3 kart -->
-      <div class="row g-3">
+      <div class="row g-4">
         <div class="col-md-4">
-          <div class="kart">
-            <div class="kart-no">01</div>
-            <h5>Responsive Tasarım</h5>
-            <p>Container, row, col yapıları ile farklı ekranlarda uyumlu görünüm oluşturulur.</p>
+          <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body p-4 text-center">
+              <div class="display-6 fw-bold text-primary mb-3">01</div>
+              <h5 class="card-title fw-bold">Responsive Tasarım</h5>
+              <p class="card-text text-secondary small">Container, row ve col yapıları ile her ekrana uyumlu görünüm.</p>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="kart">
-            <div class="kart-no">02</div>
-            <h5>Form Yapıları</h5>
-            <p>Bootstrap form-control, form-select ve form-check sınıfları kullanılır.</p>
+          <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body p-4 text-center">
+              <div class="display-6 fw-bold text-primary mb-3">02</div>
+              <h5 class="card-title fw-bold">Form Yapıları</h5>
+              <p class="card-text text-secondary small">Bootstrap form-control ve form-select ile düzenli girdiler.</p>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="kart">
-            <div class="kart-no">03</div>
-            <h5>JavaScript Etkileşimi</h5>
-            <p>Form gönderildiğinde özet kartı oluşturulur; tema butonu sayfa görünümünü değiştirir.</p>
+          <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body p-4 text-center">
+              <div class="display-6 fw-bold text-primary mb-3">03</div>
+              <h5 class="card-title fw-bold">JS Etkileşimi</h5>
+              <p class="card-text text-secondary small">Form verilerinden dinamik özet kartı oluşturma süreci.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== ETKİNLİK BİLGİLERİ ===== -->
-  <div class="sayfa" style="padding-top:0;">
-    <div class="row g-4">
-
-      <div class="col-md-5">
-        <div class="content-box h-100">
-          <div class="bolum-baslik">Etkinlik Bilgileri</div>
-          <div class="info-satir"><span>Tarih</span><span class="info-etiket">12 Mayıs</span></div>
-          <div class="info-satir"><span>Saat</span><span class="info-etiket">13.30</span></div>
-          <div class="info-satir"><span>Yer</span><span class="info-etiket">Lab 205</span></div>
-          <div class="info-satir"><span>Kontenjan</span><span class="info-etiket">40 Kişi</span></div>
-        </div>
-      </div>
-
-      <div class="col-md-7">
-        <div class="content-box h-100">
-          <div class="bolum-baslik">Neden Katılmalısınız?</div>
-          <div class="row g-2">
-            <div class="col-sm-6">
-              <div class="neden-kart">
-                <h5>Bootstrap pratiği</h5>
-                <p>Hazır sınıflarla kısa sürede profesyonel arayüz oluşturmayı görürsünüz.</p>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="neden-kart">
-                <h5>JavaScript mantığı</h5>
-                <p>DOM erişimi, event listener ve koşullu yapı örneği uygulanır.</p>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="neden-kart">
-                <h5>Gerçek senaryo</h5>
-                <p>Basit ama gerçekçi bir etkinlik kayıt sayfası geliştirilir.</p>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="neden-kart">
-                <h5>GitHub Pages uyumu</h5>
-                <p>Sayfa doğrudan mevcut ana sayfadan erişilebilir şekilde hazırlanır.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ===== BAŞVURU FORMU ===== -->
-  <div class="sayfa" style="padding-top:0;" id="basvuru">
+  <div class="container sayfa pt-0" id="basvuru">
     <div class="content-box">
       <div class="bolum-baslik">Başvuru Formu</div>
-      <p style="font-size:0.88rem; margin-bottom:1.2rem;">
-        Formu doldurun, JavaScript otomatik olarak başvuru özetinizi oluştursun.
-        <span style="color:#c00;">*</span> ile işaretli alanlar zorunludur.
-      </p>
-
       <form id="basvuruForm" novalidate>
-
-        <div class="row g-3 mb-3">
-          <div class="col-sm-6">
-            <label class="form-label" for="adSoyad">Ad Soyad <span style="color:#c00;">*</span></label>
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Ad Soyad *</label>
             <input type="text" id="adSoyad" class="form-control" placeholder="Adınızı girin">
           </div>
-          <div class="col-sm-6">
-            <label class="form-label" for="email">E-posta <span style="color:#c00;">*</span></label>
+          <div class="col-md-6">
+            <label class="form-label fw-bold">E-posta *</label>
             <input type="email" id="email" class="form-control" placeholder="ornek@email.com">
           </div>
-        </div>
-
-        <div class="row g-3 mb-3">
-          <div class="col-sm-6">
-            <label class="form-label" for="bolum">Bölüm <span style="color:#c00;">*</span></label>
-            <input type="text" id="bolum" class="form-control" placeholder="Bölümünüzü girin">
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Bölüm *</label>
+            <input type="text" id="bolum" class="form-control" placeholder="Bölümünüz">
           </div>
-          <div class="col-sm-6">
-            <label class="form-label" for="sinif">Sınıf <span style="color:#c00;">*</span></label>
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Sınıf *</label>
             <select id="sinif" class="form-select">
-              <option value="">Sınıf seçin</option>
+              <option value="">Seçiniz</option>
               <option>1. Sınıf</option>
               <option>2. Sınıf</option>
               <option>3. Sınıf</option>
               <option>4. Sınıf</option>
             </select>
           </div>
-        </div>
-
-        <div class="row g-3 mb-3">
-          <div class="col-sm-6">
-            <label class="form-label" for="oturum">Katılmak İstediğiniz Oturum <span style="color:#c00;">*</span></label>
-            <select id="oturum" class="form-select">
-              <option value="">Oturum seçin</option>
-              <option>Bootstrap + JS Projesi</option>
-              <option>Responsive Tasarım</option>
-              <option>Form Yapıları</option>
-              <option>GitHub Pages Yayını</option>
-            </select>
+          <div class="col-12">
+            <label class="form-label fw-bold">Kısa Mesaj</label>
+            <textarea id="mesaj" class="form-control" rows="3" placeholder="Sorularınız..."></textarea>
           </div>
-          <div class="col-sm-6">
-            <label class="form-label" for="katilimTuru">Katılım Türü <span style="color:#c00;">*</span></label>
-            <select id="katilimTuru" class="form-select">
-              <option value="">Katılım türü seçin</option>
-              <option>Yüz yüze</option>
-              <option>Çevrimiçi</option>
-            </select>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="onayCheck">
+              <label class="form-check-label small text-secondary" for="onayCheck">
+                Bilgilerimin kullanımını kabul ediyorum.
+              </label>
+            </div>
           </div>
         </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="mesaj">Kısa Mesaj</label>
-          <textarea id="mesaj" class="form-control" rows="3"
-                    placeholder="Beklentilerinizi veya sorularınızı yazabilirsiniz…"></textarea>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">Başvuru Özeti Oluştur</button>
+          <button type="button" id="temizleBtn" class="btn btn-outline-secondary">Temizle</button>
         </div>
-
-        <div class="mb-4" style="font-size:0.88rem;">
-          <label style="display:flex; align-items:flex-start; gap:0.5rem; cursor:pointer;">
-            <input type="checkbox" id="onayCheck" style="margin-top:3px; accent-color:var(--accent);">
-            <span style="color:var(--muted);">
-              Bilgilerimin sadece laboratuvar uygulaması amacıyla kullanılmasını kabul ediyorum.
-            </span>
-          </label>
-        </div>
-
-        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-          <button type="submit" class="btn-mavi">Başvuru Özeti Oluştur</button>
-          <button type="button" id="temizleBtn" class="btn-cizgi">Formu Temizle</button>
-        </div>
-
       </form>
     </div>
   </div>
 
-  <!-- ===== SONUÇ ALANI ===== -->
-  <div class="sayfa" style="padding-top:0; padding-bottom:0;" id="sonuc">
-    <div id="sonucAlani" class="sonuc-alani">
-      <p style="margin:0; font-size:0.9rem;">
-        Henüz başvuru özeti oluşturulmadı.
-        <span style="color:var(--accent);">Formu doldurduktan sonra sonuç burada görünecek.</span>
-      </p>
+  <div class="container mb-5">
+    <div id="sonucAlani" class="p-4 border rounded-4 bg-light text-center shadow-sm">
+      <p class="mb-0 text-secondary">Henüz başvuru yapılmadı. Sonuç burada görünecek.</p>
     </div>
   </div>
 
-  <!-- ===== FOOTER – index.html ile birebir aynı ===== -->
-  <footer style="margin-top:40px;">
-    <p>© 2026 Elif Güven | Web Programlama Dersi</p>
+  <footer class="bg-white border-top py-4 text-center mt-auto">
+    <div class="container">
+      <p class="mb-0 text-secondary small">© 2026 Elif Güven | Web Programlama Dersi</p>
+    </div>
   </footer>
 
-  <!-- Bootstrap JS (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Hafta 7 JavaScript -->
   <script src="scripts/hafta7.js"></script>
-
 </body>
 </html>
