@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="hafta7/styles/hafta7.css">
   
   <style>
-    /* Hocanın PDF'teki gibi hafif gölgeler ve yuvarlak hatlar için minik dokunuşlar */
     .custom-blue { color: #3b5bdb; }
     .bg-custom-blue { background-color: #3b5bdb; }
     .result-alert { background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460; }
@@ -31,6 +30,10 @@
           <li class="nav-item"><a class="nav-link" href="about.html">Hakkımda</a></li>
           <li class="nav-item"><a class="nav-link" href="interests.html">İlgi Alanlarım</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+          <li class="nav-item"><a class="nav-link" href="odev.html">Css Sayfası</a></li>
+          <li class="nav-item"><a class="nav-link" href="flexbox.html">Flexbox Sayfası</a></li>
+          <li class="nav-item"><a class="nav-link" href="lab-position.html">Duyurular</a></li>
+          <li class="nav-item"><a class="nav-link" href="js_uygulama.html">Js İşlemleri</a></li>
           <li class="nav-item"><a class="nav-link active" href="hafta7.html" style="color: #3b5bdb; font-weight: bold;">Hafta 7</a></li>
         </ul>
       </div>
@@ -53,11 +56,18 @@
       <div class="col-lg-4">
         <div class="card shadow-sm border-0 h-100 p-4 main-card">
           <h3 class="h5 fw-bold mb-3">Neler Kullanıldı?</h3>
-          <ul class="list-unstyled text-secondary">
-            <li class="mb-2">✅ Bootstrap Navbar & Grid</li>
-            <li class="mb-2">✅ Bootstrap Cards & Forms</li>
-            <li class="mb-2">✅ JavaScript Event Listeners</li>
-            <li class="mb-2">✅ Dinamik Özet Üretimi</li>
+          <div class="d-flex gap-2 mb-3 flex-wrap">
+            <span class="badge bg-light text-dark border">Navbar</span>
+            <span class="badge bg-light text-dark border">Grid</span>
+            <span class="badge bg-light text-dark border">Card</span>
+            <span class="badge bg-light text-dark border">Form</span>
+            <span class="badge bg-light text-dark border">Alert</span>
+          </div>
+          <ul class="list-unstyled text-secondary small mb-0">
+            <li class="mb-2">✔️ Bootstrap CDN kullanımı</li>
+            <li class="mb-2">✔️ Responsive sütun yapısı</li>
+            <li class="mb-2">✔️ JavaScript ile form verisi okuma</li>
+            <li class="mb-0">✔️ Tema değiştirme işlemi</li>
           </ul>
         </div>
       </div>
@@ -129,27 +139,41 @@
         <div class="card shadow-sm border-0 h-100 p-4">
           <h4 class="fw-bold mb-4 custom-blue" style="font-family: 'DM Serif Display', serif;">Neden Katılmalısınız?</h4>
           <div class="row g-4">
+            
             <div class="col-md-6">
-              <h6 class="fw-bold">📁 Bootstrap pratiği</h6>
-              <p class="text-secondary small mb-0">Hazır sınıflarla kısa sürede profesyonel arayüz oluşturmayı görürsünüz.</p>
+              <div class="p-3 border border-primary border-2 rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-primary"> Bootstrap pratiği</h6>
+                <p class="text-secondary small mb-0">Hazır sınıflarla kısa sürede profesyonel arayüz oluşturmayı görürsünüz.</p>
+              </div>
             </div>
+            
             <div class="col-md-6">
-              <h6 class="fw-bold">🎯 Gerçek senaryo</h6>
-              <p class="text-secondary small mb-0">Basit ama gerçekçi bir etkinlik kayıt sayfası geliştirilir.</p>
+              <div class="p-3 border border-success border-2 rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-success"> Gerçek senaryo</h6>
+                <p class="text-secondary small mb-0">Basit ama gerçekçi bir etkinlik kayıt sayfası geliştirilir.</p>
+              </div>
             </div>
+            
             <div class="col-md-6">
-              <h6 class="fw-bold">⚙️ JavaScript mantığı</h6>
-              <p class="text-secondary small mb-0">DOM erişimi, event listener ve koşullu yapı örneği uygularsınız.</p>
+              <div class="p-3 border border-warning border-2 rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-warning text-dark"> JavaScript mantığı</h6>
+                <p class="text-secondary small mb-0">DOM erişimi, event listener ve koşullu yapı örneği uygularsınız.</p>
+              </div>
             </div>
+            
             <div class="col-md-6">
-              <h6 class="fw-bold">🌐 GitHub Pages uyumu</h6>
-              <p class="text-secondary small mb-0">Sayfa doğrudan mevcut ana sayfadan erişilebilir şekilde hazırlanır.</p>
+              <div class="p-3 border border-info border-2 rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-info text-dark"> GitHub Pages uyumu</h6>
+                <p class="text-secondary small mb-0">Sayfa doğrudan mevcut ana sayfadan erişilebilir şekilde hazırlanır.</p>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="container pb-4" id="basvuru">
     <div class="card shadow-sm border-0 p-4 p-md-5 main-card">
       <h3 class="h4 fw-bold custom-blue" style="font-family: 'DM Serif Display', serif;">Başvuru Formu</h3>
@@ -159,20 +183,20 @@
         <div class="row g-3 mb-4">
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">Ad Soyad *</label>
-            <input type="text" id="adSoyad" class="form-control" placeholder="Adınızı girin">
+            <input type="text" id="adSoyad" class="form-control" placeholder="Adınızı girin" required>
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">E-posta *</label>
-            <input type="email" id="email" class="form-control" placeholder="ornek@email.com">
+            <input type="email" id="email" class="form-control" placeholder="ornek@email.com" required>
           </div>
           
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">Bölüm *</label>
-            <input type="text" id="bolum" class="form-control" placeholder="Bölümünüz">
+            <input type="text" id="bolum" class="form-control" placeholder="Bölümünüz" required>
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">Sınıf *</label>
-            <select id="sinif" class="form-select">
+            <select id="sinif" class="form-select" required>
               <option value="">Sınıf seçin</option>
               <option>1. Sınıf</option>
               <option>2. Sınıf</option>
@@ -183,7 +207,7 @@
 
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">Katılmak İstediğiniz Oturum *</label>
-            <select id="oturum" class="form-select">
+            <select id="oturum" class="form-select" required>
               <option value="">Oturum seçin</option>
               <option>Bootstrap + JS Projesi</option>
               <option>Responsive Tasarım</option>
@@ -193,7 +217,7 @@
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold text-secondary">Katılım Türü *</label>
-            <select id="katilimTuru" class="form-select">
+            <select id="katilimTuru" class="form-select" required>
               <option value="">Katılım türü seçin</option>
               <option>Yüz yüze</option>
               <option>Çevrimiçi</option>
@@ -207,7 +231,7 @@
           
           <div class="col-12">
             <div class="form-check mt-2">
-              <input class="form-check-input" type="checkbox" id="onayCheck">
+              <input class="form-check-input" type="checkbox" id="onayCheck" required>
               <label class="form-check-label fw-medium text-dark" for="onayCheck">
                 Bilgilerimin sadece laboratuvar uygulaması amacıyla kullanılmasını kabul ediyorum.
               </label>
@@ -217,7 +241,7 @@
 
         <div class="d-flex gap-2">
           <button type="submit" class="btn text-white px-4 py-2 bg-custom-blue">Başvuru Özeti Oluştur</button>
-          <button type="button" id="temizleBtn" class="btn btn-outline-secondary px-4 py-2">Formu Temizle</button>
+          <button type="reset" id="temizleBtn" class="btn btn-outline-secondary px-4 py-2">Formu Temizle</button>
         </div>
       </form>
     </div>
