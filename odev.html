@@ -18,13 +18,6 @@
             --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
         }
 
-        /* --- 1. GRUP SEÇİCİ (Ödev Gereksinimi) --- */
-        h1, h3, footer p {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -35,122 +28,182 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            padding: 20px;
         }
 
+        /* --- 1. GRUP SEÇİCİ (Ödev Kuralı) --- */
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        /* --- HEADER & NAVBAR (Görünüm modern flex, menü item'ları hocanın istediği gibi inline-block) --- */
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 4vw;
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius) var(--radius) 0 0;
-            padding: 30px;
-            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
         }
 
         header h1 {
-            font-family: 'DM Serif Display', serif;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin: 0;
         }
 
-        /* --- 2. HİYERARŞİK SEÇİCİ (Ödev Gereksinimi: Menüyü inline-block yapma) --- */
+        /* --- 2. HİYERARŞİK SEÇİCİ 1 (Ödev Kuralı: nav ul li yapısı ve inline-block) --- */
+        nav ul {
+            list-style: none;
+        }
+
         nav ul li {
-            display: inline-block; /* Ödevde istenen teknik: inline-block  */
-            margin: 0 10px;
+            display: inline-block; /* Hocanın istediği menü kuralı */
+            margin-left: 2rem;
         }
 
-        /* --- 3. HİYERARŞİK SEÇİCİ (Link ve Hover Efekti) --- */
         nav ul li a {
             text-decoration: none;
             color: var(--muted);
-            font-weight: 600;
             font-size: 0.9rem;
-            transition: color 0.3s; /* Hover efekti [cite: 18] */
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        /* Hover efekti (Ödev kuralı) */
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0; right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.2s;
         }
 
         nav ul li a:hover {
             color: var(--accent);
         }
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
 
+        .header-alt {
+            display: none; /* Temiz görünüm için gizlendi, istenirse açılabilir */
+        }
+
+        /* --- ANA İÇERİK DÜZENİ (Görünüm beyaz modern kutu, teknik inline-block) --- */
         main {
-            background: var(--surface);
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            padding: 40px;
-            /* Kutuları yan yana getirmek için display mantığı  */
-            letter-spacing: -1em; /* inline-block boşluk sorunu için */
+            padding: 40px 4vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            letter-spacing: -1em; /* inline-block'un oluşturduğu varsayılan boşluğu yokedip düzgün hizalar */
         }
 
         .content-box, .sidebar-box {
-            display: inline-block; /* Ödevde istenen yan yana getirme tekniği  */
+            display: inline-block; /* İki kutuyu yan yana getirme display mantığı (Ödev kuralı) */
             vertical-align: top;
-            letter-spacing: normal;
-            padding: 20px;
+            letter-spacing: normal; /* İçerikteki yazıları normale döndür */
+            background: var(--surface); /* SENİN MODERN BEYAZ KUTUN */
+            border: 1px solid var(--border);
             border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
         }
 
         .content-box {
-            width: 65%; /* Sütun genişliği [cite: 13] */
-            background-color: #fffdf2;
-            border: 1px solid #f9ebbe;
+            width: 65%;
+            margin-right: 3%; /* Kutular arası boşluk */
         }
 
         .sidebar-box {
-            width: 30%;
-            margin-left: 5%;
-            background-color: #f0f7ff;
-            border: 1px solid #d1e3ff;
+            width: 32%;
         }
 
-        /* İçerik metin düzenlemeleri  */
+        /* --- 3. HİYERARŞİK SEÇİCİ 2 & METİN ÖZELLİKLERİ (Ödev Kuralı: En az 3 özellik) --- */
         .content-box p, .sidebar-box p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text);
+            font-size: 15px;       /* Özellik 1 */
+            color: var(--muted);   /* Özellik 2 */
+            line-height: 1.7;      /* Özellik 3 */
+            text-align: justify;   /* Özellik 4 */
             margin-bottom: 15px;
-            text-align: justify;
         }
 
+        .sidebar-box hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .sidebar-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* --- FOOTER --- */
         footer {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 0 0 var(--radius) var(--radius);
+            background-color: var(--surface);
             padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
             color: var(--muted);
             font-size: 0.85rem;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>CSS Temel Ödevi</h1>
+        <h1>Elif Güven</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
                 <li><a href="about.html">Hakkımda</a></li>
                 <li><a href="interests.html">İlgi Alanlarım</a></li>
                 <li><a href="contact.html">İletişim</a></li>
+                <li><a href="odev.html">Css Sayfası</a></li>
+                <li><a href="flexbox.html">Flexbox Sayfası</a></li>
+                <li><a href="lab-position.html">Duyurular</a></li>
+                <li><a href="js_uygulama.html">Js İşlemleri</a></li>
             </ul>
         </nav>
-        <p style="margin-top: 15px; color: var(--muted);">HTML5 ve CSS3 Temel Uygulaması</p>
     </header>
 
     <main>
         <section class="content-box">
-            <h3>İçerik Alanı</h3>
-            <p>Bu alanda örnek içerik metinleri bulunmaktadır. CSS özellikleriyle bu metinler arasında boşluklar (line-height) ve hizalamalar (text-align) düzenlenmiştir[cite: 8, 9].</p>
-            <p>Ödev gereksinimlerine uygun olarak bu iki kutu <b>display: inline-block</b> yöntemiyle yan yana getirilmiştir.</p>
+            <h3>Hoş Geldiniz</h3>
+            <p>Bu sayfa; CSS seçicileri, kutu modeli (box model) ve sayfa düzeni tekniklerini kullanarak bir web sayfasını görsel olarak düzenlemeyi öğrenmek amacıyla hazırlanmıştır. Sayfada hiyerarşik ve grup seçicileriyle stillendirme yapılmıştır.</p>
+            
+            <h3>Öğrenme Hedeflerim</h3>
+            <p>1. CSS Kutu Modeli (Box Model) mantığını kavramak.</p>
+            <p>2. Elementleri `display` özellikleri ile yan yana konumlandırmak.</p>
+            <p>3. Kullanıcı deneyimi için basit `hover` efektleri oluşturmak.</p>
         </section>
 
         <aside class="sidebar-box">
-            <h3>Yan Menü</h3>
-            <p>Bu alan yan menü veya bilgi kısmıdır[cite: 12, 13].</p>
-            <p>CSS seçicileri kullanılarak hiyerarşik ve grup stillendirmeleri uygulanmıştır[cite: 14].</p>
+            <h3>Hızlı Bilgiler</h3>
+            <p><b>Ders:</b> Web Programlama.</p>
+            <p><b>Konu:</b> CSS Temelleri.</p>
+            <p><b>Teknik:</b> Inline-Block Layout</p>
+            
+            <hr>
+            
+            <h3>Bağlantılar</h3>
+            <p><a href="https://github.com/ElifGuvenn" target="_blank">GitHub</a></p>
+            <p><a href="https://www.w3schools.com" target="_blank">W3Schools</a></p>
         </aside>
     </main>
 
     <footer>
-        <p>© 2026 Elif Güven | Bu sayfa bir HTML-CSS alıştırmasıdır[cite: 15].</p>
+        <p>© 2026 Elif Güven | Web Programlama Dersi</p>
     </footer>
 
 </body>
